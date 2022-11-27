@@ -1,3 +1,4 @@
+const { findOne } = require('../models/userModel');
 const User = require('../models/userModel');
 
 exports.signUp = async (req, res, next) => {
@@ -13,7 +14,11 @@ exports.signUp = async (req, res, next) => {
 }
 
 exports.logIn = async (req, res) => {
-    return res.status(200).send({ message: "hitting LogIn route" });
+    const foundUser = await User.findOne({ email: req.body.email });
+    if (!foundUser)
+        res.status(400).send({ error: "User doesn't exist" });
+    else
+        res.status(200).send({ message: "Found the user", user: foundUser })
 }
 
 exports.updateUser = async (req, res) => {
