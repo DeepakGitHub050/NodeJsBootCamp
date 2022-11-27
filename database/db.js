@@ -13,6 +13,6 @@ const database = mongoose.connect(
         if(!error)
             console.log("connected to MongoDB");
         else
-            console.log("Failed to connect to MongoDB\n"+error);
+            console.log("Failed to connect to MongoDB\n"+error)
     }
 )
