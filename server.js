@@ -1,5 +1,6 @@
 const http = require("http");
 const app = require("./app");
+require('./database/db');
 
 const server = http.createServer(app);
 
